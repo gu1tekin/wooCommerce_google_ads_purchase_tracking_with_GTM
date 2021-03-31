@@ -8,15 +8,15 @@
 // Implementing the GTM container <script> to <head>
 add_action('wp_head', 'add_gtm_container_script');
     function add_gtm_container_script(){ ?>
-		<!-- Google Tag Manager -->
-		<script>
+	<!-- Google Tag Manager -->
+	<script>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-XXXX');
         </script>
-		<!-- End Google Tag Manager -->
+	<!-- End Google Tag Manager -->
   <?php } 
 
 // Implementing the GTM container <noscript> to <body>
@@ -36,12 +36,12 @@ add_action('woocommerce_thankyou', 'ads_purchase_tracking');
 	   $order = new WC_Order($order_id);
 	   $currency = $order->get_order_currency();
 	   $total = $order->get_total(); ?>
-        <script>
-			dataLayer.push({
-			  'conversionValue': <?php echo $total ?>,
-			  'currency': '<?php echo $currency ?>',
-			  'transactionId': '<?php echo $order_id ?>',
-			  'event': 'orderTrackingAdsConversion' //event for trigger
-			});
-		</script>
+           <script>
+		dataLayer.push({
+		   'conversionValue': <?php echo $total ?>,
+		   'currency': '<?php echo $currency ?>',
+		   'transactionId': '<?php echo $order_id ?>',
+		   'event': 'orderTrackingAdsConversion' //event for trigger
+		});
+	   </script>
 <?php }
